@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos - Sip and Revive</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+    }
+    .contenedor-productos {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem;
+    }
+    .columna {
+      width: 48%;
+    }
+    .producto {
+      background: #fff9e6;
+      border: 1px solid #ffa726;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .producto img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      aspect-ratio: 1/1;
+    }
+    .producto h3 {
+      color: #2e7d32;
+    }
+    .producto button {
+      background-color: #ec407a;
+      color: white;
+      padding: 0.5rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+    }
+    .producto button:hover {
+      background-color: #d81b60;
+    }
+    .carrito {
+      background-color: #fff9e6;
+      border-top: 2px solid #ffa726;
+      padding: 1rem;
+      margin: 2rem;
+      border-radius: 10px;
+    }
+    .carrito h2 {
+      color: #2e7d32;
+    }
+    #btn-pedir {
+      background-color: #25d366;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nuestros Productos</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+        <li><a href="vision.html">Visión</a></li>
+        <li><a href="mision.html">Misión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contenedor-productos">
+      <div class="columna izquierda">
+        <div class="producto">
+          <img src="img/img1.jpg" alt="Tentación De Chocolate">
+          <h3>Tentación de Chocolate</h3>
+          <p>Q40.00</p>
+          <button onclick="agregarAlCarrito('Tentación de Chocolate', 40)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img2.jpg" alt="Infusión Vital">
+          <h3>Infusión Vital</h3>
+          <p>Q25.00</p>
+          <button onclick="agregarAlCarrito('Infusión Vital', 25)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img3.jpg" alt="Pink Panter">
+          <h3>Pink Panter</h3>
+          <p>Q25.00</p>
+          <button onclick="agregarAlCarrito('Pink Panter', 25)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img4.jpg" alt="Banana y Caramelo">
+          <h3>Sip de Banana y Caramelo</h3>
+          <p>Q35.00</p>
+          <button onclick="agregarAlCarrito('Sip de Banana y Caramelo', 35)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img5.jpg" alt="Trasnochada">
+          <h3>Trasnochada</h3>
+          <p>Q50.00</p>
+          <button onclick="agregarAlCarrito('Trasnochada', 50)">Agregar al carrito</button>
+        </div>
+      </div>
+      <div class="columna derecha">
+        <div class="producto">
+          <img src="img/img6.jpg" alt="Elixir de Manzana">
+          <h3>Elixir de Manzana</h3>
+          <p>Q25.00</p>
+          <button onclick="agregarAlCarrito('Elixir de Manzana', 25)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img7.jpg" alt="Té Chai">
+          <h3>Té Chai</h3>
+          <p>Q25.00</p>
+          <button onclick="agregarAlCarrito('Té Chai', 25)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img8.jpg" alt="Berry Boost">
+          <h3>Berry Boost</h3>
+          <p>Q50.00</p>
+          <button onclick="agregarAlCarrito('Berry Boost', 50)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img9.jpg" alt="Sip de Canela">
+          <h3>Sip de Canela</h3>
+          <p>Q35.00</p>
+          <button onclick="agregarAlCarrito('Sip de Canela', 35)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/img10.jpg" alt="Waffles">
+          <h3>Waffles</h3>
+          <p>Q40.00</p>
+          <button onclick="agregarAlCarrito('Waffles', 40)">Agregar al carrito</button>
+        </div>
+         <div class="producto">
+          <img src="img/img11.jpg" alt="bolw">
+          <h3>bowl</h3>
+          <p>Q40.00</p>
+          <button onclick="agregarAlCarrito('bowl', 40)">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="carrito">
+      <h2>Carrito de Compras</h2>
+      <ul id="lista-carrito"></ul>
+      <button id="btn-pedir" onclick="pedirPorWhatsApp()">Pedir por WhatsApp</button>
+    </section>
+  </main>
+
+  <script>
+    const carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      lista.innerHTML = '';
+      carrito.forEach(producto => {
+        const li = document.createElement('li');
+        li.textContent = `${producto.nombre} - Q${producto.precio}`;
+        lista.appendChild(li);
+      });
+    }
+
+    function pedirPorWhatsApp() {
+      if (carrito.length === 0) return alert('Tu carrito está vacío');
+      let mensaje = 'Hola, quiero pedir lo siguiente:%0A';
+      carrito.forEach(p => {
+        mensaje += `- ${p.nombre} (Q${p.precio})%0A`;
+      });
+      const url = `https://wa.me/50254330040?text=${mensaje}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
