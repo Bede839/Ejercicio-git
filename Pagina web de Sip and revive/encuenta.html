@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Encuesta - Sip and Revive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #fff8f0;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff5e8c;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      margin-top: 40px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-size: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: linear-gradient(45deg, #ff5e8c, #ff9a44, #fcd000);
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🍊 Encuesta de Bienestar y Nutrición 🍓</h2>
+
+  <form id="encuesta-form" onsubmit="enviarWhatsApp(event)">
+    <label for="nombre">👤 Nombre:</label>
+    <input type="text" id="nombre" required>
+
+    <label for="edad">🎂 Edad:</label>
+    <input type="number" id="edad" required>
+
+    <label for="agua">💧 ¿Tomas suficiente agua al día?</label>
+    <select id="agua" required>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+      <option value="A veces">A veces</option>
+    </select>
+
+    <label for="alimentacion">🥗 ¿Cómo calificarías tu alimentación?</label>
+    <select id="alimentacion" required>
+      <option value="Muy saludable">Muy saludable</option>
+      <option value="Normal">Normal</option>
+      <option value="Poco saludable">Poco saludable</option>
+    </select>
+
+    <label>✨ ¿Qué te interesa mejorar?</label>
+    <input type="checkbox" id="fisico" value="Físico"> Físico<br>
+    <input type="checkbox" id="mental" value="Mental"> Mental<br>
+    <input type="checkbox" id="ambos" value="Ambos"> Ambos<br>
+
+    <button type="submit">📲 Enviar por WhatsApp</button>
+  </form>
+
+  <script>
+    function enviarWhatsApp(event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const edad = document.getElementById('edad').value;
+      const agua = document.getElementById('agua').value;
+      const alimentacion = document.getElementById('alimentacion').value;
+
+      let intereses = [];
+      if (document.getElementById('fisico').checked) intereses.push("Físico");
+      if (document.getElementById('mental').checked) intereses.push("Mental");
+      if (document.getElementById('ambos').checked) intereses.push("Ambos");
+
+      const mensaje = `Hola, soy ${nombre}, tengo ${edad} años.
+💧 Tomo agua: ${agua}
+🍎 Alimentación: ${alimentacion}
+✨ Interés en mejorar: ${intereses.join(", ")}`;
+
+      const numero = "50254330040";
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
